@@ -1,0 +1,9 @@
+﻿@model ProjectListViewModel
+
+
+<h1>@Model.CurrentCategory</h1>
+
+@foreach (var project in Model.Projects)
+{
+    <partial name="_ProjectCard" model="project"/>
+}
