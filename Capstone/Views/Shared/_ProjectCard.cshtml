@@ -4,18 +4,25 @@
     <div class="thumbnail">
         <img src="@Model.ImageThumbnailUrl" alt="">
         <div class="caption">
-            <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+            @if (@Model.CanSell)
+            {
+                <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+            }
             <h3>
                 <a asp-controller="Project" asp-action="Details" asp-route-id="@Model.ProjectId">@Model.Name</a>
             </h3>
             <p>@Model.ShortDescription</p>
         </div>
-        <div class="addToCart">
-            <p class="button">
+        @if(@Model.CanSell)
+        {
+            <div class="addToCart">
+            <p class="button" >
                 <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ProjectId="@Model.ProjectId">
                     Add to cart
                 </a>
             </p>
         </div>
+        }
+        
     </div>
 </div>

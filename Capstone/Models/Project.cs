@@ -1,4 +1,6 @@
-﻿namespace CapstoneProject.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CapstoneProject.Models
 {
     public class Project
     {
@@ -15,5 +17,7 @@
         public int CategoryId { get; set; } = 0;
         public virtual Category Category { get; set; } = new Category();
         public string Notes { get; set; } = "";
+        [NotMapped]
+        public bool CanSell => Price > 0.0m;
     }
 }
